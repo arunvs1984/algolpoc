@@ -6,6 +6,7 @@ require('dotenv').config();
 
 const app = require('./app');
 const http = require('http');
+import * as url from 'url';
 
 /**
  * Get port from environment and store in Express.
@@ -19,6 +20,13 @@ app.set('port', port);
  */
 
 const server = http.createServer(app);
+app.use(express.static('public'));
+app.get('/streamer', (req, res) => {
+    res.sendFile(rootPath + 'public/streamer.html');
+});
+app.get('/receiver', (req, res) => {
+    res.sendFile(rootPath + 'public/receiver.html');
+});
 
 /**
  * Listen on provided port, on all network interfaces.
