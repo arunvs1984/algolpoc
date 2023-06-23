@@ -38,6 +38,10 @@ router.get('/', asyncMiddleware(async (req, res) => {
   res.json(todos);
 }));
 
+router.get('/streamer',function(req,res){
+  res.sendFile(path.join(__dirname+'/streamer.html'));
+});
+
 router.patch('/:id', asyncMiddleware(async (req, res) => {
   const { id } = req.params;
   const updated = await prisma.TodoItem.update({
