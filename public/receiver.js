@@ -13,7 +13,7 @@
  * limitations under the License.
  */
 
-const RECEIVER_PEER_ID = 'receiver';
+const RECEIVER_PEER_ID_1 = 'receiver';
 const socket = io();
 
 connectToServer();
@@ -22,7 +22,7 @@ connectToServer();
  * Connects the receiver browser to the WebRTC server.
  */
 function connectToServer() {
-    const receiverPeer = new Peer(RECEIVER_PEER_ID);
+    const receiverPeer = new Peer(RECEIVER_PEER_ID_1);
     receiverPeer.on('open', () => {
         socket.emit('join-receiver');
     });
